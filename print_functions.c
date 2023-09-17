@@ -42,14 +42,8 @@ void print_string(const char *str, int *count)
  */
 void print_integer(int num, int *count)
 {
-	int digits, temp, divisor, digit, i;
-
-	if (num < 0)
-	{
-		putchar('-');
-		(*count)++;
-		num = -num;
-	}
+	int reversed = 0;
+	int digits = 0;
 
 	if (num == 0)
 	{
@@ -58,26 +52,29 @@ void print_integer(int num, int *count)
 		return;
 	}
 
-	digits = 0;
-	temp = num;
-	while (temp > 0)
+	if (num < 0)
 	{
-		temp /= 10;
+		putchar('-');
+		(*count)++;
+		num = -num;
+	}
+
+	while (num > 0)
+	{
+		int digit = num % 10;
+
+		reversed = reversed * 10 + digit;
+		num /= 10;
 		digits++;
 	}
 
-	divisor = 1;
-	for (i = 1; i < digits; i++)
+	while (digits > 0)
 	{
-		divisor *= 10;
-	}
+		int digit = reversed % 10;
 
-	while (divisor > 0)
-	{
-		digit = num / divisor;
 		putchar('0' + digit);
 		(*count)++;
-		num %= divisor;
-		divisor /= 10;
+		reversed /= 10;
+		digits--;
 	}
 }
