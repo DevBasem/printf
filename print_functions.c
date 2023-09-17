@@ -23,6 +23,10 @@ void print_string(const char *str, int *count)
 {
 	const char *s;
 
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
 	for (s = str; *s; s++)
 	{
 		putchar(*s);
