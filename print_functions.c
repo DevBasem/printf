@@ -18,12 +18,19 @@ void print_char(char c, int *char_count)
  */
 void print_string(const char *str, int *char_count)
 {
-	int len = 0;
-
-	while (str[len] != '\0')
+	if (str)
 	{
-		len++;
+		int len = 0;
+
+		while (str[len] != '\0')
+		{
+			len++;
+		}
+		write(1, str, len);
+		(*char_count) += len;
 	}
-	write(1, str, len);
-	(*char_count) += len;
+	else
+	{
+		print_string("(null)", char_count);
+	}
 }
