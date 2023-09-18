@@ -27,7 +27,7 @@ int print_string(const char *str, int *count)
 	size_t len = 0;
 
 	if (str == NULL)
-		return (*count);
+		return (NULL);
 	while (str[len] != '\0')
 		len++;
 
