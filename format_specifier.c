@@ -1,11 +1,13 @@
 #include "main.h"
 /**
- * print_char - Prints a char.
- * @c: character to be printed.
- * @count: total number of characters printed.
+ * handle_format_specifier - handels the specifier.
+ * @format: the format of the function.
+ * @args: arguments.
+ * @char_count: total number of characters printed.
  * Return: Number of chars printed.
  */
-void handle_format_specifier(const char **format, va_list args, int *char_count)
+void handle_format_specifier(const char **format,
+		va_list args, int *char_count)
 {
 	(*format)++;
 
@@ -17,14 +19,16 @@ void handle_format_specifier(const char **format, va_list args, int *char_count)
 	if (**format == 'c')
 	{
 		char c = va_arg(args, int);
+
 		print_char(c, char_count);
-	} 
+	}
 	else if (**format == 's')
 	{
 		char *str = va_arg(args, char *);
+
 		print_string(str, char_count);
 	}
-	else if (**format == '%') 
+	else if (**format == '%')
 	{
 		print_char('%', char_count);
 	}
