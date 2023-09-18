@@ -7,7 +7,7 @@
  */
 int print_char(int c, int *count)
 {
-	putchar(c);
+	putchar((unsigned char)c);
 	(*count)++;
 	return (*count);
 }
@@ -19,6 +19,8 @@ int print_char(int c, int *count)
  */
 int print_string(const char *str, int *count)
 {
+	if (str == NULL)
+		return (*count);
 	while (*str)
 	{
 		putchar(*str);
