@@ -28,5 +28,7 @@ int main(void)
 	_printf(NULL);
 	_printf("\0");
 	printf("\0");
+	_printf("%%c\n");
+	printf("%%c\n");
 	return (0);
 }
