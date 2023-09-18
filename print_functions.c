@@ -7,7 +7,11 @@
  */
 void print_char(char c, int *char_count)
 {
-	write(1, &c, 1);
+	int result = write(1, &c, 1);
+	if (result == -1) {
+		perror("write");
+		return;
+	}
 	(*char_count)++;
 }
 /**
