@@ -28,6 +28,10 @@ void handle_format_specifier(const char **format,
 
 		print_string(str, char_count);
 	}
+	else if (**format == 'd' || **format == 'i')
+	{
+		print_int(args);
+	}
 	else if (**format == '%')
 	{
 		print_char('%', char_count);
