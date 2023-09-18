@@ -14,8 +14,8 @@ int main(void)
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 	_printf("%\n");
-	printf("%\n");
 	_printf("%-\n");
+	printf("%-\n");
 	printf("%-\n");
 	_printf("testing%\n");
 	printf("testing%\n");

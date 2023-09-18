@@ -7,9 +7,8 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <stdarg.h>
-int print_char(int c, int *count);
-int print_string(const char *str, int *count);
-int print_percent(int *count);
-int print_integer(int num, int *count);
+void handle_format_specifier(const char **format, va_list args, int *char_count);
+void print_char(char c, int *char_count);
+void print_string(const char *str, int *char_count);
 int _printf(const char *format, ...);
 #endif /* MAIN_H */

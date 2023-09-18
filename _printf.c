@@ -7,44 +7,27 @@
  */
 int _printf(const char *format, ...)
 {
+	int char_count = 0;
 	va_list args;
-	int count = 0;
 
 	va_start(args, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+	if (format == NULL)
+	{
+		return -1;
+	}
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					print_char(va_arg(args, int), &count);
-					break;
-				case 's':
-					print_string(va_arg(args, char *), &count);
-					break;
-				case '%':
-					print_percent(&count);
-					break;
-				case 'd':
-				case 'i':
-					print_integer(va_arg(args, int), &count);
-					break;
-				default:
-					print_char('%', &count);
-					print_char(*format, &count);
-					break;
-			}
+			handle_format_specifier(&format, args, &char_count);
 		}
 		else
-			print_char(*format, &count);
+		{
+			print_char(*format, &char_count);
+		}
 		format++;
 	}
+
 	va_end(args);
-	return (count);
+	return char_count;
 }
