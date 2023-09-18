@@ -10,8 +10,6 @@
 void handle_format_specifier(const char **format,
 		va_list args, int *char_count);
 void print_char(char c, int *char_count);
-int print_int(va_list args);
 void print_string(const char *str, int *char_count);
 int _printf(const char *format, ...);
-int _putchar(char c);
 #endif /* MAIN_H */
