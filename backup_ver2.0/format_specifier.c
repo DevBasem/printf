@@ -34,12 +34,6 @@ int handle_format_specifier(const char **format,
 
 		return (print_int(num, char_count));
 	}
-	else if (**format == 'b')
-	{
-		unsigned int num = va_arg(args, unsigned int);
-
-		return (print_binary(num, char_count));
-	}
 	else if (**format == '%')
 	{
 		return (print_char('%', char_count));

@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * print_char - Prints a char.
  * @c: character to be printed.
@@ -15,7 +14,6 @@ int print_char(char c, int *char_count)
 	(*char_count)++;
 	return (0);
 }
-
 /**
  * print_string - Prints a string.
  * @str: string to be printed.
@@ -45,7 +43,6 @@ int print_string(const char *str, int *char_count)
 		return (print_string("(null)", char_count));
 	}
 }
-
 /**
  * print_int - Prints an integer.
  * @n: integer to be printed.
@@ -89,44 +86,4 @@ int print_int(int n, int *char_count)
 		}
 	}
 	return (len);
-}
-
-/**
- * print_binary - Prints an unsigned integer in binary format.
- * @n: unsigned integer to be printed in binary.
- * @char_count: total number of characters printed.
- * Return: Number of chars printed.
- */
-int print_binary(unsigned int n, int *char_count)
-{
-	int len = 0;
-	char buffer[33];
-	int start = 0;
-	int i;
-
-	if (n == 0)
-	{
-		return (print_char('0', char_count));
-	}
-	if (n > UINT_MAX)
-	{
-		return (-1);
-	}
-	for (int i = 31; i >= 0; i--)
-	{
-		buffer[len++] = (n & (1U << i)) ? '1' : '0';
-	}
-
-	while (start < len && buffer[start] == '0')
-	{
-		start++;
-	}
-	for (int i = start; i < len; i++)
-	{
-		if (print_char(buffer[i], char_count) == -1)
-		{
-			return (-1);
-		}
-	}
-	return (len - start);
 }
