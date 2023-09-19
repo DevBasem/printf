@@ -7,6 +7,8 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <errno.h>
+#include <limits.h>
 int handle_format_specifier(const char **format,
 		va_list args, int *char_count);
 int print_char(char c, int *char_count);

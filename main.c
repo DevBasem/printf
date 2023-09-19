@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	int len ;
+	int len;
 	int len2;
 	int num1 = 12345;
 	int custom_result, standard_result;
@@ -42,12 +42,10 @@ int main(void)
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
 	printf("Testing _printf against printf:\n");
-
 	custom_result = _printf("Custom: %d\n", num1);
 	standard_result = printf("Standard: %d\n", num1);
 	printf("Custom Result: %d\n", custom_result);
 	printf("Standard Result: %d\n", standard_result);
 	printf("\n");
-
 	return (0);
 }

@@ -51,45 +51,48 @@ int print_string(const char *str, int *char_count)
  */
 int print_int(int n, int *char_count)
 {
-	char buffer[12];
-	unsigned long int i = sizeof(buffer) - 1;
 	int is_negative = 0;
+	char buffer[12];
+	long unsigned int i = 0;
+	long unsigned int j;
 
+	if (n == INT_MIN)
+	{
+		const char min_str[] = "-2147483648";
+
+		return (print_string(min_str, char_count));
+	}
 	if (n < 0)
 	{
 		is_negative = 1;
 		n = -n;
 	}
-
-	if (n == 0)
+	while (n > 0)
 	{
-		buffer[i--] = '0';
-	}
-	else
-	{
-		while (n > 0)
+		if (i >= sizeof(buffer))
 		{
-			buffer[i--] = '0' + (n % 10);
-			n /= 10;
-		}
-	}
-
-	if (is_negative)
-	{
-		buffer[i--] = '-';
-	}
-
-	i++;
-
-	while (i < sizeof(buffer))
-	{
-		if (write(1, &buffer[i], 1) != 1)
-		{
+			errno = EOVERFLOW;
 			return (-1);
 		}
-		(*char_count)++;
-		i++;
+		buffer[i++] = '0' + (n % 10);
+		n /= 10;
 	}
+	if (is_negative)
+	{
+		if (i >= sizeof(buffer))
+		{
+			errno = EOVERFLOW;
+			return (-1);
+		}
 
-	return (0);
+		buffer[i++] = '-';
+	}
+	for (j = 0; j < i / 2; j++)
+	{
+		char temp = buffer[j];
+
+		buffer[j] = buffer[i - j - 1];
+		buffer[i - j - 1] = temp;
+	}
+	return (print_string(buffer, char_count));
 }
