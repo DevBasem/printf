@@ -5,10 +5,14 @@
  * @char_count: total number of characters printed.
  * Return: Number of chars printed.
  */
-void print_char(char c, int *char_count)
+int print_char(char c, int *char_count)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) != 1)
+	{
+		return (-1);
+	}
 	(*char_count)++;
+	return (0);
 }
 /**
  * print_string - Prints a string.
@@ -16,19 +20,26 @@ void print_char(char c, int *char_count)
  * @char_count: total number of characters printed.
  * Return: Number of chars printed.
  */
-void print_string(const char *str, int *char_count)
+int print_string(const char *str, int *char_count)
 {
-	int len = 0;
-
-	if (str == NULL)
+	if (str)
 	{
-		str = "(null)";
-	}
-	while (str[len] != '\0')
-	{
-		len++;
-	}
+		int len = 0;
 
-	write(1, str, len);
-	(*char_count) += len;
+		while (str[len] != '\0')
+		{
+			len++;
+		}
+
+		if (write(1, str, len) != len)
+		{
+			return (-1);
+		}
+		(*char_count) += len;
+		return (0);
+	}
+	else
+	{
+		return (print_string("(null)", char_count));
+	}
 }

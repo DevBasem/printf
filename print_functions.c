@@ -43,3 +43,39 @@ int print_string(const char *str, int *char_count)
 		return (print_string("(null)", char_count));
 	}
 }
+/**
+ * print_int - Prints an integer.
+ * @n: Integer to be printed.
+ * @char_count: Total number of characters printed.
+ * Return: 0 on success, -1 on error.
+ */
+int print_int(int n, int *char_count)
+{
+	char buffer[12];
+	int len = 0;
+	int i;
+
+	if (n < 0) {
+		if (print_char('-', char_count) == -1)
+		{
+			return (-1);
+		}
+		n = -n;
+	}
+
+	do 
+	{
+		buffer[len++] = '0' + (n % 10);
+		n /= 10;
+	} while (n > 0);
+
+	for (i = len - 1; i >= 0; i--)
+	{
+		if (print_char(buffer[i], char_count) == -1)
+		{
+			return (-1);
+		}
+	}
+
+	return (0);
+}

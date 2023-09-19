@@ -21,11 +21,19 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			handle_format_specifier(&format, args, &char_count);
+			if (handle_format_specifier(&format, args, &char_count) == -1)
+			{
+				va_end(args);
+				return (-1);
+			}
 		}
 		else
 		{
-			print_char(*format, &char_count);
+			if (print_char(*format, &char_count) == -1)
+			{
+				va_end(args);
+				return (-1);
+			}
 		}
 		format++;
 	}

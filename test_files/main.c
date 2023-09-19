@@ -9,22 +9,42 @@
  */
 int main(void)
 {
-	int len;
-	int len2;
+	int result1, result2;
+	char *str = "Hello, World!";
+	char *null_str = NULL;
+	char *empty_str = "";
+	char ch = 'B';
+	char c = 'A';
 
-	len = _printf("Let's try to printf a simple sentence.\n");
-	len2 = printf("Let's try to printf a simple sentence.\n");
-	_printf("Length:[%d, %i]\n", len, len);
-	printf("Length:[%d, %i]\n", len2, len2);
-	_printf("Negative:[%d]\n", -762534);
-	printf("Negative:[%d]\n", -762534);
-	_printf("Character:[%c]\n", 'H');
-	printf("Character:[%c]\n", 'H');
-	_printf("String:[%s]\n", "I am a string !");
-	printf("String:[%s]\n", "I am a string !");
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
-	_printf("Len:[%d]\n", len);
-	printf("Len:[%d]\n", len2);
+	printf("Testing specifier 'c':\n");
+	result1 = printf("Printf: %c\n", c);
+	result2 = _printf("MyPrintf: %c\n", c);
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
+	printf("\nTesting specifier 's':\n");
+	result1 = printf("Printf: %s\n", str);
+	result2 = _printf("MyPrintf: %s\n", str);
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
+	printf("\nTesting specifier '%%':\n");
+	result1 = printf("Printf: %%\n");
+	result2 = _printf("MyPrintf: %%\n");
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
+	printf("\nTesting NULL string:\n");
+	result1 = printf("Printf: %s\n", null_str);
+	result2 = _printf("MyPrintf: %s\n", null_str);
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
+	printf("\nTesting empty string:\n");
+	result1 = printf("Printf: %s\n", empty_str);
+	result2 = _printf("MyPrintf: %s\n", empty_str);
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
+	printf("\nTesting mixed specifiers:\n");
+	result1 = printf("Printf: %c, %s, %%\n", ch, str);
+	result2 = _printf("MyPrintf: %c, %s, %%\n", ch, str);
+	printf("Expected: %d, Actual: %d\n", result1, result2);
+
 	return (0);
 }
