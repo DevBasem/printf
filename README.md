@@ -8,8 +8,6 @@ This repository contains an implementation of the `printf` function in C, which 
 - [Functionality](#functionality)
 - [How to Compile](#how-to-compile)
 - [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 
@@ -33,3 +31,12 @@ int main(void) {
     char_count = _printf("Hello, %s! You have %d apples.\n", "John", 42);
     return (0);
 }
+
+## Functionality
+
+- `print_char`: Prints a character.
+- `print_string`: Prints a string.
+- `print_int`: Prints an integer.
+- `print_binary`: Prints an unsigned integer in binary format.
+- `handle_format_specifier`: Handles format specifiers and delegates printing to the appropriate functions.
+- `_printf`: The main printf function that takes the format string and variable arguments.
