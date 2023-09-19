@@ -28,12 +28,6 @@ int handle_format_specifier(const char **format,
 
 		return (print_string(str, char_count));
 	}
-	else if (**format == 'd' || **format == 'i')
-	{
-		int num = va_arg(args, int);
-
-		return (print_int(num, char_count));
-	}
 	else if (**format == '%')
 	{
 		return (print_char('%', char_count));
