@@ -112,7 +112,7 @@ int print_binary(unsigned int n, int *char_count)
 	{
 		return (-1);
 	}
-	for (int i = 31; i >= 0; i--)
+	for (i = 31; i >= 0; i--)
 	{
 		buffer[len++] = (n & (1U << i)) ? '1' : '0';
 	}
@@ -121,7 +121,7 @@ int print_binary(unsigned int n, int *char_count)
 	{
 		start++;
 	}
-	for (int i = start; i < len; i++)
+	for (i = start; i < len; i++)
 	{
 		if (print_char(buffer[i], char_count) == -1)
 		{
