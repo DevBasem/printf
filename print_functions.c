@@ -52,29 +52,43 @@ int print_string(const char *str, int *char_count)
 int print_int(int n, int *char_count)
 {
 	char buffer[12];
-	int len = 0;
-	int i;
+	unsigned long int i = sizeof(buffer) - 1;
+	int is_negative = 0;
 
-	if (n < 0) {
-		if (print_char('-', char_count) == -1)
-		{
-			return (-1);
-		}
+	if (n < 0)
+	{
+		is_negative = 1;
 		n = -n;
 	}
 
-	do 
+	if (n == 0)
 	{
-		buffer[len++] = '0' + (n % 10);
-		n /= 10;
-	} while (n > 0);
+		buffer[i--] = '0';
+	}
+	else
+	{
+		while (n > 0)
+		{
+			buffer[i--] = '0' + (n % 10);
+			n /= 10;
+		}
+	}
 
-	for (i = len - 1; i >= 0; i--)
+	if (is_negative)
 	{
-		if (print_char(buffer[i], char_count) == -1)
+		buffer[i--] = '-';
+	}
+
+	i++;
+
+	while (i < sizeof(buffer))
+	{
+		if (write(1, &buffer[i], 1) != 1)
 		{
 			return (-1);
 		}
+		(*char_count)++;
+		i++;
 	}
 
 	return (0);
