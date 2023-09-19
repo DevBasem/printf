@@ -31,6 +31,7 @@ int main(void) {
     char_count = _printf("Hello, %s! You have %d apples.\n", "John", 42);
     return (0);
 }
+```
 
 ## Functionality
 
@@ -40,3 +41,22 @@ int main(void) {
 - `print_binary`: Prints an unsigned integer in binary format.
 - `handle_format_specifier`: Handles format specifiers and delegates printing to the appropriate functions.
 - `_printf`: The main printf function that takes the format string and variable arguments.
+
+## How to Compile
+
+Compile your program with the provided main.c file and your source files. For example:
+
+```bash
+gcc -Wall -Werror -Wextra -pedantic main.c your_file.c -o your_program
+```
+
+## Examples
+
+Here are some example usages of the printf function:
+
+```c
+_printf("Hello, %s!\n", "World");
+_printf("The answer is %d.\n", 42);
+_printf("Binary representation of %d is %b.\n", 10, 10);
+_printf("A percent sign: %%\n");
+```
